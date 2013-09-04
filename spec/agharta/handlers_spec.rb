@@ -31,4 +31,10 @@ describe Agharta::Handlers do
       @hook.log($stdout).should be_is_a(Agharta::Handlers::Log)
     end
   end
+
+  describe '#http' do
+    it 'should add http handler to handlers' do
+      @hook.http(:post, 'http://www.example.com/').should be_is_a(Agharta::Handlers::Http)
+    end
+  end
 end

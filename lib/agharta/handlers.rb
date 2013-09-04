@@ -3,6 +3,7 @@
 require 'agharta/handlers/log'
 require 'agharta/handlers/notify'
 require 'agharta/handlers/store'
+require 'agharta/handlers/http'
 
 module Agharta
   module Handlers
@@ -67,6 +68,10 @@ module Agharta
     #     hook.store(:fluent, 'my_tag_prefix')
     def store(*args, &block)
       add_handler(Store.new(self, *args, &block))
+    end
+
+    def http(*args, &block)
+      add_handler(Http.new(self, *args, &block))
     end
   end
 end
